@@ -21,11 +21,18 @@ Navigate to Docker Compose File Folder
 wsl
 docker-compose up -d
 docker ps
+docker volume ls
 docker-compose down -v
 
 
 hostname -I
 Connect to WSL IP from SQL Management Studio
+
+Troubleshooting
+
+docker logs -f --tail 100 portainer
+docker logs -f --tail 100 sqlserver
+
 
 
 Navigate http://172.25.225.70:50000/
