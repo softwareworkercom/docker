@@ -5,6 +5,9 @@ networks:
 volumes:
   portainer_data:
   sqlserver_data:
+  activemq_data:
+  seq_data:
+  redis_data:
 
 services:
   portainer:
@@ -33,3 +36,43 @@ services:
       - "50002:1433"
     volumes:
       - sqlserver_data:/var/opt/mssql
+
+  activemq:
+    image: apache/activemq-classic:latest
+    container_name: activemq
+    restart: always
+    networks:
+      - app_network
+    ports:
+      - "50003:61616"
+      - "50004:8161"
+    volumes:
+      - activemq_data:/opt/activemq/data
+    environment:
+      - ACTIVEMQ_CONFIG_MAXINACTIVITYDURATION=30000
+
+  seq:
+    image: datalust/seq:latest
+    container_name: seq
+    restart: always
+    networks:
+      - app_network
+    ports:
+      - "50005:80"
+      - "50006:5341"
+    volumes:
+      - seq_data:/data
+    environment:
+      - ACCEPT_EULA=Y
+
+  redis:
+    image: redis:latest
+    container_name: redis
+    restart: always
+    networks:
+      - app_network
+    ports:
+      - "50007:6379"
+    volumes:
+      - redis_data:/data
+    command: redis-server --appendonly yes
