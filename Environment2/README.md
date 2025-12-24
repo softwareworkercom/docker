@@ -83,31 +83,16 @@ wsl --shutdown
 
 ### 2. Install Docker Compose
 
-Create a bin directory and download Docker Compose:
+Open WSL and install Docker Compose:
 
 ```bash
 wsl
-mkdir -p ~/bin
-```
-
-Check the latest version at: https://github.com/docker/compose/releases
-
-```bash
-curl -L "https://github.com/docker/compose/releases/download/v5.0.1/docker-compose-$(uname -s)-$(uname -m)" -o ~/bin/docker-compose
-chmod +x ~/bin/docker-compose
-```
-
-Add Docker Compose to your PATH:
-
-```bash
-echo 'export PATH="$HOME/bin:$PATH"' >> ~/.bashrc
-source ~/.bashrc
+sudo apt install docker-compose
 ```
 
 Verify the installation:
 
 ```bash
-echo $PATH
 docker-compose version
 ```
 
