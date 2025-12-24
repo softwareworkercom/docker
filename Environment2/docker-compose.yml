@@ -50,6 +50,8 @@ services:
       - activemq_data:/opt/activemq/data
     environment:
       - ACTIVEMQ_CONFIG_MAXINACTIVITYDURATION=30000
+      - ACTIVEMQ_ADMIN_LOGIN=admin
+      - ACTIVEMQ_ADMIN_PASSWORD=admin
 
   seq:
     image: datalust/seq:latest
@@ -64,6 +66,7 @@ services:
       - seq_data:/data
     environment:
       - ACCEPT_EULA=Y
+      - SEQ_FIRSTRUN_ADMINPASSWORDHASH=admin
 
   redis:
     image: redis:latest
