@@ -6,6 +6,58 @@ This guide assumes you're using WSL (Windows Subsystem for Linux) on Windows.
 
 ## Installation
 
+### 0. Install WSL and Ubuntu
+
+#### Install WSL 2
+
+Open PowerShell as Administrator and run:
+
+```powershell
+wsl --install
+```
+
+This command installs WSL and the default Linux distribution (usually Ubuntu). If WSL is already installed, update it:
+
+```powershell
+wsl --update
+```
+
+#### Set Ubuntu as Distribution (if not already set)
+
+List available distributions:
+
+```powershell
+wsl --list --online
+```
+
+Install Ubuntu if not already installed:
+
+```powershell
+wsl --install --distribution Ubuntu
+```
+
+Set Ubuntu as the default distribution:
+
+```powershell
+wsl --set-default Ubuntu
+```
+
+#### Verify WSL Installation
+
+Check the installed distributions:
+
+```powershell
+wsl --list --verbose
+```
+
+You should see Ubuntu listed with version 2. If it shows version 1, upgrade it:
+
+```powershell
+wsl --set-version Ubuntu 2
+```
+
+Restart your computer after installation and setup are complete.
+
 ### 1. Install Docker
 
 Open WSL and run the following commands:
@@ -126,13 +178,7 @@ docker logs -f --tail 100 sqlserver
 
 1. Navigate to: `http://172.25.225.70:50000/`
 2. Create admin user with password: `4dm1nP4ssw0rd@`
-3. Go to **Environments**
-4. Click **Add Environment**
-5. Select **Docker Standalone**
-6. Click **Start Wizard**
-7. Choose **Socket**
-8. Write a unique name for your environment
-9. Click **Connect**
+3. Go to `http://172.25.225.70:50000/#!/home`
 
 ---
 
