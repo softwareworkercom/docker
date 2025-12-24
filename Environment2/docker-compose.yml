@@ -66,7 +66,7 @@ services:
       - seq_data:/data
     environment:
       - ACCEPT_EULA=Y
-      - SEQ_FIRSTRUN_ADMINPASSWORDHASH=admin
+      - SEQ_FIRSTRUN_NOAUTHENTICATION=true
 
   redis:
     image: redis:latest
